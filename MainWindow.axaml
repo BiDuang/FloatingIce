@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="500" Height="250"
+        x:Class="FloatingIce.MainWindow"
+        Title="FloatingIce"
+
+        Icon="Assets/Icon.ico"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        TransparencyLevelHint="AcrylicBlur"
+        CanResize="False"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+    <Grid>
+        <ExperimentalAcrylicBorder x:Name="ExperimentalAcrylicBorder" />
+        <Grid>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10"
+                    Width="55" Height="25" Opacity="0.8" x:Name="WindowCloseButton" Click="WindowCloseButton_OnClick">
+                <PathIcon Data="{StaticResource DismissRegular}" Width="10" Height="10" />
+            </Button>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="70, 10"
+                    Width="40" Height="25" Opacity="0.7" x:Name="WindowMinimizeButton"
+                    Click="WindowMinimizeButton_OnClick">
+                <PathIcon Data="{StaticResource LineHorizontal1Regular}" Width="10" Height="10" Margin="0,10,0,0" />
+            </Button>
+            <Grid>
+                <TextBox x:Name="FloatBox" Width="400" Height="60" Watermark="在此输入浮点数或获取浮点数结果" Margin="0,50,0,0"
+                         VerticalAlignment="Top" TextChanged="FloatBox_OnTextChanged" />
+                <PathIcon Data="{StaticResource ArrowSyncRegular}" Width="25" Height="25" Margin="0, 121, 0, 0"
+                          VerticalAlignment="Top" x:Name="TransitionIcon">
+                    <ToolTip.Tip>
+                        <TextBlock>
+                            在任一输入框中输入数据开始转换，仅支持浮点精度数据转换 <LineBreak /> Floating Ice | Powered by BiDuang (C) 2023
+                        </TextBlock>
+                    </ToolTip.Tip>
+                </PathIcon>
+                <PathIcon Data="{StaticResource ErrorCircleRegular}" Width="25" Height="25" Margin="0, 120, 0, 0"
+                          VerticalAlignment="Top" x:Name="ErrorIcon" IsVisible="False" />
+                <PathIcon Data="{StaticResource WindowRegular}" Width="20" Height="20" Margin="230, 125, 0, 0"
+                          VerticalAlignment="Top" x:Name="TopNormalIcon" />
+                <ToggleSwitch Margin="380,120,0, 0" VerticalAlignment="Top"
+                              Width="40" Height="30" Opacity="0.7" x:Name="WindowsTopmostButton"
+                              Click="WindowsTopmostButton_OnClick">
+                    <ToolTip.Tip>
+                        改变窗口置顶状态
+                    </ToolTip.Tip>
+                </ToggleSwitch>
+                <PathIcon Data="{StaticResource WindowMultipleRegular}" Width="20" Height="20" Margin="370, 125, 0, 0"
+                          VerticalAlignment="Top" x:Name="TopmostIcon" />
+                <TextBox x:Name="HexBox" Width="400" Height="60" Watermark="在此输入十六进制数或获取十六进制数结果" Margin="0,160,0,0"
+                         VerticalAlignment="Top" TextChanged="HexBox_OnTextChanged" />
+                <Grid x:Name="ClipButtons" IsEnabled="False">
+                    <ToolTip.Tip>
+                        将结果复制到剪贴板
+                    </ToolTip.Tip>
+                    <Button VerticalAlignment="Top" Margin="50,120,0,0"
+                            Width="30" Height="30" Opacity="0.8" x:Name="CopyFloatButton"
+                            Click="CopyFloatButton_OnClick">
+                        <PathIcon Data="{StaticResource ArrowCurveUpRightRegular}" Width="17" Height="17" />
+                    </Button>
+                    <PathIcon Data="{StaticResource ClipboardLetterRegular}" Width="23" Height="23"
+                              Margin="90, 122, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <Button VerticalAlignment="Top" Margin="123,120,0,0"
+                            Width="30" Height="30" Opacity="0.8" x:Name="CopyHexButton"
+                            Click="CopyHexButton_OnClick">
+                        <PathIcon Data="{StaticResource ArrowCurveDownLeftRegular}" Width="17" Height="17" />
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
